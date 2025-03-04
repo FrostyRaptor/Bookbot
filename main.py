@@ -1,5 +1,5 @@
-def word_count(txt):
-    return len(txt.split())
+from stats import word_count
+
 def char_count(txt):
     char = {}
 
