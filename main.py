@@ -1,27 +1,5 @@
-from stats import word_count
-
-def char_count(txt):
-    char = {}
-
-    for letter in txt:
-        lower = letter.lower()
-        if lower in char:
-            char[lower] += 1
-        else:
-            char[lower] = 1
-
-    return char
-def sort_on(d):
-    return d["num"]
-
-def sort_dict(dict):
-    sorted_lst = []
-
-    for char in dict:
-        sorted_lst.append({"char": char, "num": dict[char]})
- 
-    sorted_lst.sort(reverse=True, key=sort_on)
-    return sorted_lst
+from stats import char_count, word_count
+from sort import sort_dict
 
 def print_char_report(txt):
     dict = char_count(txt)
