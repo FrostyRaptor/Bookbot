@@ -1,3 +1,4 @@
+import sys
 from stats import char_count, word_count
 from sort import sort_dict
 
@@ -5,20 +6,24 @@ def print_char_report(txt):
     dict = char_count(txt)
     lst = sort_dict(dict)
 
-    print("--- Begin report of books/frankenstein.txt ---")
+    print(f"--- Begin report of {sys.argv[1]} ---")
     print(f"{word_count(txt)} words found in the document\n")
 
     for item in lst:
         if item["char"].isalpha():
-            print(f"The {item["char"]} character was found {item["num"]} times")
+            print(f"{item["char"]}: {item["num"]}")
 
     print("\n--- End Report ---")
 
 def main():
 
-    with open("books/frankenstein.txt") as txt:
-        frankenstein_txt = txt.read()
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
 
-    print_char_report(frankenstein_txt)
+    with open(sys.argv[1]) as txt:
+        user_txt = txt.read()
+
+    print_char_report(user_txt)
 
 main()
